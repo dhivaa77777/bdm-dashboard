@@ -2,11 +2,16 @@
 
 All queries read from the ``vw_*`` analytical views that were validated
 against the independent CSV audit.  No hard-coded dashboard numbers are
-present — every value is produced by a PostgreSQL query at run time.
+present � every value is produced by a PostgreSQL query at run time.
 
 The module is intentionally thin: it only contains SQL and very minor
 Python helpers.  Formatting is in ``formatting.py``.
 """
+
+import sys
+import os
+# Ensure repo root is on sys.path for package imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dashboard.db import run_query, run_scalar
 
