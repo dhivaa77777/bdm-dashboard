@@ -8,13 +8,6 @@ The module is intentionally thin: it only contains SQL and very minor
 Python helpers.  Formatting is in ``formatting.py``.
 """
 
-import sys
-import os
-# Ensure repo root is on sys.path for package imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from dashboard.db import run_query, run_scalar
-
 
 # ---------------------------------------------------------------------
 # KPI row (the 5 cards that appear at the top of the dashboard)
