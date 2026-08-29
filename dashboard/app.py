@@ -69,7 +69,7 @@ from queries import (
     review_score_distribution,
     repeat_customer_rate,
 )
-from dashboard.formatting import (
+from formatting import (
     format_currency,
     format_number,
     format_percent,
