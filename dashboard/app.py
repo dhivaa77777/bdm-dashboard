@@ -16,7 +16,13 @@ mix + top 5 states/categories) is always readable without interaction.
 """
 
 import os
+import sys
 from datetime import datetime, timezone
+
+# Ensure repository root is on sys.path so 'dashboard' package is importable
+# This is critical for Streamlit Cloud execution where the working directory
+# may not include the repo root automatically.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import streamlit as st
 
