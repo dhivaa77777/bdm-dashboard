@@ -10,7 +10,7 @@ constructs SQL strings directly — that work is delegated to ``queries.py``.
 
 import os
 from contextlib import contextmanager
-from dotenv import load_dotload_dotenv
+from dotenv import load_dotenv
 import psycopg2
 from psycopg2.extras import RealDictCursor
 

@@ -16,7 +16,7 @@ mix + top 5 states/categories) is always readable without interaction.
 """
 
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 
 import streamlit as st
 
@@ -25,7 +25,17 @@ import streamlit as st
 # --------------------------------------------------------------------- #
 # The app expects the environment variable injected by Streamlit Cloud
 # (or the local ``.env`` file that is *git‑ignored*).
-from dashboard.db import (
+# Initialise session state for filter defaults so date_input works on first load.
+if "date_range_start" not in st.session_state:
+    st.session_state["date_range_start"] = datetime(2017, 1, 1).date()
+if "date_range_end" not in st.session_state:
+    st.session_state["date_range_end"] = datetime.now(timezone.utc).date()
+if "status_options" not in st.session_state:
+    st.session_state["status_options"] = ["delivered", "canceled", "unavailable", "in_process", "return_pending"]
+if "payment_type_options" not in st.session_state:
+    st.session_state["payment_type_options"] = ["credit_card", "boleto", "voucher", "debit_card", "not_defined"]
+
+from dashboard.queries import (
     kpi,
     payment_summary,
     installment_distribution,
