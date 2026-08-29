@@ -93,7 +93,7 @@ olist-customer-payment-dashboard/
 
 ## 7. Database schema & relationships
 
-Full detail: `docs/database-schema.md`. Summary:
+Full detail: `docs/database-schema.md` (renders a readable ER diagram with cardinality on GitHub). Standalone diagram: `docs/diagrams/er-diagram.mmd`. Summary:
 
 ```text
 customers (customer_id PK) ──orders──> order_payments / order_items / order_reviews

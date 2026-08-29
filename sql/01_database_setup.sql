@@ -147,8 +147,10 @@ CREATE INDEX idx_payments_installments ON order_payments (payment_installments);
 --    IMPORTANT (real-dataset finding): review_id is NOT unique in the
 --    source. 789 review_id values are reused across DIFFERENT orders
 --    (same review content/timestamps attached to two orders). Therefore
---    review_id is NOT a primary key here; the row grain is one review
---    record per order occurrence. order_id is the analytical join key.
+--    review_id is NOT a primary key here. The provable row grain is one
+--    review record per order occurrence, so the composite pair
+--    (review_id, order_id) is enforced as UNIQUE (verified: 0 duplicates).
+--    order_id remains the analytical join key.
 -- ---------------------------------------------------------------------
 CREATE TABLE order_reviews (
     review_id               text NOT NULL,
@@ -157,7 +159,8 @@ CREATE TABLE order_reviews (
     review_comment_title    text,
     review_comment_message  text,
     review_creation_date    timestamptz,
-    review_answer_timestamp timestamptz
+    review_answer_timestamp timestamptz,
+    CONSTRAINT order_reviews_grain_unique UNIQUE (review_id, order_id)
 );
 
 CREATE INDEX idx_reviews_id    ON order_reviews (review_id);

@@ -1,0 +1,53 @@
+erDiagram
+    CUSTOMERS ||--o{ ORDERS : "places (customer_id)"
+    ORDERS ||--o{ ORDER_PAYMENTS : "has (order_id)"
+    ORDERS ||--o{ ORDER_ITEMS : "contains (order_id)"
+    ORDERS ||--o{ ORDER_REVIEWS : "receives (order_id)"
+    PRODUCTS ||--o{ ORDER_ITEMS : "included_in (product_id)"
+    SELLERS ||--o{ ORDER_ITEMS : "fulfills (seller_id)"
+    PRODUCTS }o--o| PRODUCT_CATEGORY_NAME_TRANSLATION : "category lookup"
+
+    CUSTOMERS {
+        text customer_id PK
+        text customer_unique_id
+        text customer_state
+    }
+    ORDERS {
+        text order_id PK
+        text customer_id FK
+        text order_status
+        timestamptz order_purchase_timestamp
+    }
+    ORDER_PAYMENTS {
+        text order_id PK,FK
+        int payment_sequential PK
+        text payment_type
+        int payment_installments
+        numeric payment_value
+    }
+    ORDER_ITEMS {
+        text order_id PK,FK
+        int order_item_id PK
+        text product_id FK
+        text seller_id FK
+        numeric price
+        numeric freight_value
+    }
+    ORDER_REVIEWS {
+        text review_id
+        text order_id FK
+        int review_score
+    }
+    PRODUCTS {
+        text product_id PK
+        text product_category_name
+    }
+    SELLERS {
+        text seller_id PK
+        text seller_city
+        text seller_state
+    }
+    PRODUCT_CATEGORY_NAME_TRANSLATION {
+        text product_category_name PK
+        text product_category_name_english
+    }
