@@ -1,0 +1,18 @@
+# Environment (never commit real values)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Raw data (original Olist CSVs are large; keep the repository lean)
+data/*.csv
+!data/.gitkeep
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

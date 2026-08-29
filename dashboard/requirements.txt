@@ -1,0 +1,10 @@
+streamlit>=1.40
+psycopg2-binary>=2.9.11
+python-dotenv>=1.0
+
+# IMPORTANT: pandas is intentionally NOT used. On the dev machine, Windows
+# Application Control blocks certain native DLLs that pandas/pyarrow load
+# (pandas 2.x _libs, pandas 3.x import of pyarrow._compute). The app is
+# deliberately pandas-free: plain psycopg2 + CSS/HTML bars via st.html +
+# Markdown tables, so it runs on any machine without those dependencies.
+# altair/pyarrow are therefore not required either.
