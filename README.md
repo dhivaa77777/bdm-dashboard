@@ -1,5 +1,15 @@
 # Olist Customer & Payment Analytics Dashboard
 
+## 🚀 Live Dashboard
+
+https://bdm-dashboard.streamlit.app
+
+## 💻 GitHub Repository
+
+https://github.com/dhivaa77777/bdm-dashboard
+
+---
+
 A compact, management-style analytics project for the **Olist** (Brazilian
 e-commerce marketplace) dataset. It answers, from a customer's point of view:
 *how much are we earning, how do customers pay, who are the top customers and
@@ -216,6 +226,21 @@ Rationale documented in `docs/dashboard-guide.md` (the 20-second test).
 real value, and **never commit `.env`**. No credentials appear anywhere in the
 repository.
 
+## 17. Deployment (GitHub → Streamlit Community Cloud → Supabase)
+
+This project is deployed to Streamlit Community Cloud.
+
+1. **Repository**: `dhivaa77777/bdm-dashboard` (public)
+2. **Branch**: `main`
+3. **Main file**: `dashboard/app.py`
+4. **Streamlit Secrets**: configure `SUPABASE_DATABASE_URL` with the production
+   Supabase PostgreSQL connection string (from Supabase Dashboard → Settings →
+   Database → Connection string → Transaction pooler).
+5. **Deploy**: push to `main` triggers auto-deploy.
+
+The live dashboard reads directly from Supabase `vw_*` views — no data is
+embedded in the repo.
+
 ## 17. Traceability map
 
 | Dashboard element | View | Source tables | Calculation |
@@ -258,7 +283,11 @@ repository.
 
 ## 21. Team members
 
-[Add team member names and roles here]
+> **MANUAL ACTION REQUIRED:** Add team member names and roles here.
+
+| Name | Role |
+|------|------|
+| | |
 
 ---
 
