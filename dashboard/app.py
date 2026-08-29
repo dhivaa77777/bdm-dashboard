@@ -19,7 +19,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-# Ensure repository root is on sys.path so 'dashboard' package is importable
+# Ensure repository root is on sys.path so 'queries' etc. are importable
 # This is critical for Streamlit Cloud execution where the working directory
 # may not include the repo root automatically.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -41,7 +41,7 @@ if "status_options" not in st.session_state:
 if "payment_type_options" not in st.session_state:
     st.session_state["payment_type_options"] = ["credit_card", "boleto", "voucher", "debit_card", "not_defined"]
 
-from dashboard.queries import (
+from queries import (
     kpi,
     payment_summary,
     installment_distribution,
@@ -56,7 +56,7 @@ from dashboard.queries import (
     top5_state_share,
     top_category_share,
 )
-from dashboard.queries import (
+from queries import (
     payment_summary_dynamic,
     installment_distribution as inst_dyn,
     monthly_payment_trend,
