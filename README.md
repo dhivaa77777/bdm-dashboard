@@ -241,6 +241,20 @@ This project is deployed to Streamlit Community Cloud.
 The live dashboard reads directly from Supabase `vw_*` views — no data is
 embedded in the repo.
 
+### Import path fix
+On Streamlit Cloud, the working directory may not include the repo root.
+The fix: `dashboard/app.py` line 26 uses `os.path.dirname(os.path.abspath(__file__))`
+to add the `dashboard/` directory to `sys.path`, so that `from queries import ...`
+and `from formatting import ...` resolve correctly regardless of CWD.
+
+### Dynamic dashboard views
+The dashboard supports filter‑aware dynamic views defined in `sql/09_dynamic_dashboard.sql`
+and performance indexes in `sql/10_dynamic_dashboard_indexes.sql`. These views
+are not yet applied to the Supabase instance referenced in this repo — they require
+manual application via the Supabase SQL editor (or a migration script). When
+deployed, ensure `SUPABASE_DATABASE_URL` points to a database where these views
+exist, or the filter‑dependent queries will fall back to the static `vw_*` views.
+
 ## 17. Traceability map
 
 | Dashboard element | View | Source tables | Calculation |
