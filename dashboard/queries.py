@@ -7,6 +7,7 @@ present � every value is produced by a PostgreSQL query at run time.
 The module is intentionally thin: it only contains SQL and very minor
 Python helpers.  Formatting is in ``formatting.py``.
 """
+from db import run_query
 
 
 # ---------------------------------------------------------------------

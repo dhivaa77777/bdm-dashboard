@@ -19,10 +19,11 @@ import os
 import sys
 from datetime import datetime, timezone
 
-# Ensure repository root is on sys.path so 'queries' etc. are importable
-# This is critical for Streamlit Cloud execution where the working directory
-# may not include the repo root automatically.
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Ensure the dashboard package directory is on sys.path so 'queries',
+# 'db', 'formatting' etc. are importable regardless of CWD.
+# Critical for Streamlit Cloud where the working directory may be
+# different from the repo root.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
 
